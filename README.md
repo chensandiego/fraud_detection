@@ -1,7 +1,7 @@
 # fraud_detection
 
 
-Example: run flow locally
+# Example: run flow locally
 
 Start Redis: docker run -d --name redis -p 6379:6379 redis:7-alpine
 
@@ -14,7 +14,7 @@ Start consumer: python scoring_consumer.py
 Start producer: python producer.py
 
 
-Notes & next steps (production considerations)
+# Notes & next steps (production considerations)
 
 Schema: switch to Avro/Schema Registry to validate messages.
 
