@@ -1,6 +1,5 @@
 # fraud_detection
 
-
 # Example: run flow locally
 
 Start Redis: docker run -d --name redis -p 6379:6379 redis:7-alpine
@@ -12,7 +11,6 @@ Train model: python trainer.py (creates model.joblib)
 Start consumer: python scoring_consumer.py
 
 Start producer: python producer.py
-
 
 # Notes & next steps (production considerations)
 
@@ -33,3 +31,15 @@ Latency: for low-latency (ms) scoring, keep features in-memory or cache; for bat
 Explainability & logging: log decision reasons, feature values, and retain for audits.
 
 Alerting pipeline: alerts topic → alert service (email/SMS/ops) → manual review UI.
+
+make up — build and start services
+
+make train — run trainer once (creates model.joblib)
+
+make produce — run producer to pump transactions
+
+make consume — run the scoring consumer (creates alerts in Redis and the alerts Kafka topic)
+
+GET http://localhost:8000/alerts — see recent alerts
+
+POST http://localhost:8000/alerts/<alert-id>/mark — mark false positive with JSON {"false_positive": true}
